@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="CinemaFlow - Premium movie discovery platform">
+  <title>CinemaFlow</title>
+  <link rel="stylesheet" href="css/modern-styles.css">
+</head>
+<body>
+  <screen id="welcome-screen" class="screen active">
+    <section class="welcome-wrapper">
+      <div class="ambient-shape ambient-a"></div>
+      <div class="ambient-shape ambient-b"></div>
+      <div class="ambient-shape ambient-c"></div>
+
+      <div class="welcome-layout">
+        <div class="welcome-carousel-panel">
+          <div class="welcome-carousel-header">
+            <p class="chip">Cinematic Feed</p>
+            <h3>Featured right now</h3>
+          </div>
+
+          <div class="welcome-carousel-viewport" id="welcome-carousel-viewport">
+            <div class="welcome-carousel-track" id="welcome-carousel-track"></div>
+          </div>
+
+          <div class="welcome-carousel-controls">
+            <button class="carousel-arrow" type="button" onclick="prevWelcomeSlide()" aria-label="Previous slide">&#10094;</button>
+            <div class="carousel-dots" id="welcome-carousel-dots"></div>
+            <button class="carousel-arrow" type="button" onclick="nextWelcomeSlide()" aria-label="Next slide">&#10095;</button>
+          </div>
+        </div>
+
+        <div class="welcome-content-panel">
+          <p class="welcome-overline">CinemaFlow</p>
+          <h1>Welcome to your movie space</h1>
+          <p class="welcome-copy">
+            Discover trending films, get preference-based recommendations, and explore details with a premium browsing experience inspired by top movie platforms.
+          </p>
+          <button class="btn-primary btn-lg" type="button" onclick="goToScreen('onboarding')">Get Started</button>
+        </div>
+      </div>
+    </section>
+  </screen>
+
+  <screen id="onboarding-screen" class="screen">
+    <section class="onboarding-wrapper">
+      <header class="onboarding-header">
+        <button class="btn-icon" type="button" onclick="goToScreen('welcome')" aria-label="Back to welcome">&#8592;</button>
+        <div class="progress-indicator">
+          <div class="step active">1</div>
+          <div class="step-line"></div>
+          <div class="step">2</div>
+          <div class="step-line"></div>
+          <div class="step">3</div>
+          <div class="step-line"></div>
+          <div class="step">4</div>
+        </div>
+        <div class="header-spacer"></div>
+      </header>
+
+      <main class="onboarding-content">
+        <section class="onboarding-step active" data-step="1">
+          <h2>Select language</h2>
+          <p class="step-hint">Multi-select enabled</p>
+          <div class="options-grid multiselect language-chip-grid">
+            <button class="option-card language-chip" type="button" data-value="en">English</button>
+            <button class="option-card language-chip" type="button" data-value="hi">Hindi</button>
+            <button class="option-card language-chip" type="button" data-value="ta">Tamil</button>
+            <button class="option-card language-chip" type="button" data-value="te">Telugu</button>
+            <button class="option-card language-chip" type="button" data-value="es">Spanish</button>
+            <button class="option-card language-chip" type="button" data-value="fr">French</button>
+          </div>
+        </section>
+
+        <section class="onboarding-step" data-step="2">
+          <h2>Select age rating</h2>
+          <p class="step-hint">Single selection</p>
+          <div class="options-grid single-select age-rating-grid">
+            <button class="option-card age-card" type="button" data-value="G">
+              <span class="age-code">G</span>
+              <span class="age-copy">All ages admitted. Nothing that would offend parents.</span>
+            </button>
+            <button class="option-card age-card" type="button" data-value="PG">
+              <span class="age-code">PG</span>
+              <span class="age-copy">Parental guidance suggested. Some material may not be suitable for children.</span>
+            </button>
+            <button class="option-card age-card" type="button" data-value="PG-13">
+              <span class="age-code">PG-13</span>
+              <span class="age-copy">Parents strongly cautioned. Some material may be inappropriate for children under 13.</span>
+            </button>
+            <button class="option-card age-card" type="button" data-value="R">
+              <span class="age-code">R</span>
+              <span class="age-copy">Restricted. Under 17 requires accompanying parent or adult guardian.</span>
+            </button>
+          </div>
+        </section>
+
+        <section class="onboarding-step" data-step="3">
+          <h2>Choose genres</h2>
+          <p class="step-hint">Multi-select enabled</p>
+          <div class="options-grid multiselect">
+            <button class="option-card" type="button" data-value="28">Action</button>
+            <button class="option-card" type="button" data-value="35">Comedy</button>
+            <button class="option-card" type="button" data-value="18">Drama</button>
+            <button class="option-card" type="button" data-value="878">Sci-Fi</button>
+            <button class="option-card" type="button" data-value="53">Thriller</button>
+            <button class="option-card" type="button" data-value="10749">Romance</button>
+            <button class="option-card" type="button" data-value="27">Horror</button>
+            <button class="option-card" type="button" data-value="16">Animation</button>
+          </div>
+        </section>
+
+        <section class="onboarding-step" data-step="4">
+          <h2>Select OTT platforms</h2>
+          <p class="step-hint">Multi-select enabled</p>
+          <div class="options-grid multiselect">
+            <button class="option-card" type="button" data-value="netflix">Netflix</button>
+            <button class="option-card" type="button" data-value="prime">Prime Video</button>
+            <button class="option-card" type="button" data-value="hotstar">Disney+ Hotstar</button>
+            <button class="option-card" type="button" data-value="apple">Apple TV+</button>
+            <button class="option-card" type="button" data-value="hulu">Hulu</button>
+            <button class="option-card" type="button" data-value="max">Max</button>
+          </div>
+        </section>
+      </main>
+
+      <footer class="onboarding-footer">
+        <button class="btn-secondary" type="button" onclick="prevOnboardingStep()">Back</button>
+        <button class="btn-primary" type="button" id="onboarding-next-btn" onclick="nextOnboardingStep()">Next</button>
+      </footer>
+    </section>
+  </screen>
+
+  <screen id="app-screen" class="screen">
+    <header class="app-header">
+      <div class="brand">CinemaFlow</div>
+      <div class="search-wrap">
+        <input id="search-input" type="text" placeholder="Search movies...">
+        <button class="btn-icon" type="button" onclick="performSearch()" aria-label="Search">&#128269;</button>
+      </div>
+      <div class="header-actions">
+        <button class="btn-secondary" type="button" onclick="toggleWatchlist()">Watchlist</button>
+        <button class="btn-secondary" type="button" onclick="goToScreen('profile')">Profile Settings</button>
+        <button id="themeToggle" class="theme-toggle-btn nav-theme-toggle" type="button" aria-label="Toggle theme" aria-pressed="false">
+          <span class="theme-dot"></span>
+          <span class="theme-label" id="themeLabel">Light</span>
+        </button>
+        <button class="profile-badge" type="button" aria-label="Profile settings" onclick="goToScreen('profile')">P</button>
+      </div>
+    </header>
+
+    <main class="app-main">
+      <section class="hero-banner" id="hero-banner">
+        <div class="hero-skeleton"></div>
+      </section>
+
+      <section class="section" id="trending-section">
+        <div class="section-head">
+          <h2>Trending Now</h2>
+        </div>
+      </section>
+
+      <section class="section" id="recommended-section">
+        <div class="section-head">
+          <h2>Recommended for You</h2>
+        </div>
+      </section>
+
+      <section class="section" id="genre-rows"></section>
+    </main>
+  </screen>
+
+  <screen id="profile-screen" class="screen">
+    <section class="profile-wrapper">
+      <header class="profile-header">
+        <button class="btn-icon" type="button" onclick="goToScreen('app')" aria-label="Back to app">&#8592;</button>
+        <h2>Profile Settings</h2>
+        <div class="header-spacer"></div>
+      </header>
+
+      <main class="profile-content">
+        <section class="profile-actions-card">
+          <h3>Preference Profiles</h3>
+          <p>Save up to 4 named profiles and switch discovery filters instantly.</p>
+          <div class="profile-action-row">
+            <button class="btn-primary" type="button" onclick="saveCurrentProfile()">Save Current Preferences</button>
+            <button class="btn-secondary" type="button" onclick="goToScreen('onboarding')">Adjust Current Preferences</button>
+          </div>
+        </section>
+
+        <section class="profile-list" id="profile-list"></section>
+      </main>
+    </section>
+  </screen>
+
+  <div class="modal" id="movie-modal">
+    <div class="modal-overlay" onclick="closeMovieModal()"></div>
+    <div class="modal-card">
+      <button class="btn-icon modal-close-btn" type="button" onclick="closeMovieModal()" aria-label="Close">&#10005;</button>
+      <div class="modal-content" id="movie-modal-content"></div>
+    </div>
+  </div>
+
+  <div class="modal" id="search-modal">
+    <div class="modal-overlay" onclick="closeSearchModal()"></div>
+    <div class="modal-card search-modal-card">
+      <div class="search-modal-header">
+        <h2>Search Results</h2>
+        <button class="btn-icon" type="button" onclick="closeSearchModal()" aria-label="Close search">&#10005;</button>
+      </div>
+      <div id="search-results" class="search-results"></div>
+    </div>
+  </div>
+
+  <aside id="watchlist-sidebar" class="watchlist-sidebar">
+    <div class="watchlist-header">
+      <h2>My Watchlist</h2>
+      <button class="btn-icon" type="button" onclick="toggleWatchlist()" aria-label="Close watchlist">&#10005;</button>
+    </div>
+    <div class="watchlist-items" id="watchlist-items">
+      <p class="empty-state">Your watchlist is empty</p>
+    </div>
+  </aside>
+
+  <script src="js/api.js"></script>
+  <script src="js/movies.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
