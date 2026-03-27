@@ -12,7 +12,7 @@ const TMDB_BASE_URL = "https://api.themoviedb.org/3";
 
 app.use(cors());
 app.use(express.json());
-app.use(express.static(path.join(__dirname, "..")));
+app.use(express.static(path.join(__dirname, "../frontend")));
 
 const tmdbClient = axios.create({
   baseURL: TMDB_BASE_URL,
@@ -274,7 +274,7 @@ app.get("/api/genres", async (_req, res) => {
 });
 
 app.get("/", (_req, res) => {
-  res.sendFile(path.join(__dirname, "../index.html"));
+  res.sendFile(path.join(__dirname, "../frontend/index.html"));
 });
 
 app.use("*", (_req, res) => {
